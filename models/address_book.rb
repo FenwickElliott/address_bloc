@@ -6,16 +6,15 @@ class AddressBook
     def initialize
         @entries=[]
     end
-end
 
-def add_entry(name, phone_number, email)
-    index = 0
-    entries.each do |entry|
-        if name < entry.name
-            break
+    def add_entry(name, phone_number, email)
+        index = 0
+        entries.each do |entry|
+            if name < entry.name
+                break
+            end
+            index+=1
         end
-        index+=1
+        entries.insert(index, Entry.new(name, phone_number, email))
     end
-    entries.insert(index, Entry.new(name, phone_number, email))
-
 end
