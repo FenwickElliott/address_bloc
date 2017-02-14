@@ -17,7 +17,6 @@ RSpec.describe AddressBook do
     end
 
     describe "#add_entry" do
-        # let(:book) {AddressBook.new}
         it "adds only one entry to the address book" do
             book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
 
@@ -25,7 +24,6 @@ RSpec.describe AddressBook do
         end
 
         it "adds the correct information to entries" do
-            book = AddressBook.new
             book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
             new_entry = book.entries[0]
 
