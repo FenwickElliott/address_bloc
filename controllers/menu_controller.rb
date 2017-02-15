@@ -79,6 +79,21 @@ class MenuController
     end
 
     def read_csv
+        print "Enter CSV file to import: "
+        file_name = gets.chomp
+        if file_name.empty?
+            system "clear"
+            puts "No CSV file read"
+            main_menu
+        end
+        begin
+            entry_count = address_book.import_from_csv(file_name).count
+            system "clear"
+            puts "#{entry_count} new entries added from #{file_name}"
+        rescue
+            puts "#{file_name} is not a valid CSV file, please enter the name of a valid CSV file"
+            read_csv
+        end
     end
 
     def entry_submenu(entry)
@@ -111,8 +126,8 @@ class MenuController
         else
             puts "That is not a valid selection"
         end
-            sleep 4
+            sleep 3
             system "clear"
-            view_number
+            main_menu
     end
 end
