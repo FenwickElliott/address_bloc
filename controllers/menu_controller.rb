@@ -15,6 +15,7 @@ class MenuController
         puts "4 - Import entries from a CSV"
         puts "5 - Exit"
         puts "6 - View entry number n"
+        puts "7 - Purge"
         print "Enter your selection: "
 
         selection = gets.to_i
@@ -42,12 +43,28 @@ class MenuController
             when 6
                 system "clear"
                 view_number
+            when 7
+                purge
             else
                 system "clear"
                 puts "Sorry, that is not a valid input"
                 main_menu
         end
     end
+
+    def purge
+        system "clear"
+        puts "Are you sure? (y/n)"
+        sure = gets.chomp
+        if sure == 'y' || 'yes'
+            @address_book = AddressBook.new
+            puts "address book wiped"
+            sleep 2
+        end
+        system "clear"
+        main_menu
+    end
+
 
     def view_all_entries
         address_book.entries.each do |entry|
