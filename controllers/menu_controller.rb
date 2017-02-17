@@ -54,11 +54,15 @@ class MenuController
 
     def purge
         system "clear"
-        puts "Are you sure? (y/n)"
-        sure = gets.chomp
-        if sure == 'y' || 'yes'
+        puts "Are you sure? (Y/n)"
+        sure = gets.chomp.downcase
+        puts sure
+        if sure === 'y' || sure == 'yes' || sure == ''
             @address_book = AddressBook.new
             puts "address book wiped"
+            sleep 2
+        else
+            puts "Purge canceled"
             sleep 2
         end
         system "clear"
